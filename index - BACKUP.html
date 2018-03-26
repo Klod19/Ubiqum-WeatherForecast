@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast</title>
+    <!-- BOOTSTRAP: this CDN(Contend Delivery Network) is the latest compiled and minified CSS; CDN used when you don't download Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- BOOTSTRAP: the following is for MOBILE: ensure proper rendering and touch-zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    bootstrap 4.0; messes with the button, setting its font size-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<link rel="stylesheet" href="style/stylesheet.css">
+</head>
+<body>
+    
+<div id="vueApp">
+    <div class="container startContainer">
+       <div class="row header">
+
+             <div class="col-sm-12  titleContainer">
+                 <p id="pageTitle">Mediterranean Sun and History</p>
+                 <p id="description">Find your perfect match between a sunny weather and the discovery of ancient civilizations!</p>
+            </div>
+       </div>
+       <div class="row barContainer">
+           <div class="col-sm-3"></div>
+            <div class="col-sm-12 searchContainer">
+                <input type="text" class="quicksearch" id="quicksearch" placeholder="Search among our wonderful destinations"/> OR
+                <input type="button" id="browseButton" value="click me" v-on:click="scrollDown">
+            </div>
+            <div class="col-sm-3"></div>
+       </div>
+       <div id="footerContainer">
+         <div id="footer" class="tempInfo">
+             <!--       loop through the cities, give to the element with index === 0 a class of "active"  -->
+             <div class= "tempInfo" v-for="(city, index) in allCities"  v-bind:class="{'active' : index === 0}">
+                 <div>{{city.name}} temperature: {{city.main.temp}}°C</div>
+             </div>    
+         </div>
+       </div>
+    </div>
+    
+    
+
+    
+    
+    
+    
+
+<div id="tableContainer">
+  
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');" v-for="city in allCities">
+        <div class="flipper">
+            <div class="front">
+                <img v-bind:src="city.url" class="img">
+            </div>
+            <div class="back">
+                <ul>
+                    <li>name:{{city.name}}</li>
+                    <li>temp:{{city.main.temp}}</li>
+                    <li>clouds:{{city.clouds.all}}</li>
+                    <li>weather:{{city.weather[0].main}}</li>
+                </ul>
+            </div>
+        </div>
+     </div>
+</div>  
+<!--
+       <table class="table">
+           <tr v-for="city in allCities">
+               <td><img v-bind:src="city.url" class="img"></td>
+               <td>name:{{city.name}}</td>
+               <td>temp:{{city.main.temp}}</td>
+               <td>clouds:{{city.clouds.all}}</td>
+               <td>weather:{{city.weather[0].main}}</td>
+               <td>url:{{city.url}}</td>
+           </tr>
+       </table>
+-->
+        
+        
+        
+        
+        
+
+ 
+       
+</div>        
+             
+                
+                   
+
+   
+      
+         
+            
+ <!-- BOOTSTRAP jQuery Library-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--    -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--  bootstrap-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<!-- Following: Vue link to load Vue library DEVELOPMENT MODE!!!  -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- FOLLOWING: PRODUCTION VERSION OF VUE, for when the website is deployed -->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="script/main.js"></script> 
+
+
+</body>
+</html>
